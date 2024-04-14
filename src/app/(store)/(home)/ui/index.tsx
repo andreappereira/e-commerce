@@ -14,8 +14,8 @@ type HomeUiProps = StateProps;
 export const HomeUi: React.FC<HomeUiProps> = ({ ...rest }) => (
   <div className="grid max-h-[860px] grid-cols-9 grid-rows-6 gap-6">
     <Link
-      href={`/product/${rest.highlightedProduct.slug}`}
-      className="group relative col-span-6 row-span-6 rounded-lg bg-zinc-900 overflow-hidden flex justify-center items-end"
+      href={`/product/${rest.highlightedProduct.id}`}
+      className="group relative col-span-6 row-span-6 rounded-lg bg-zinc-900 overflow-hidden flex justify-center items-center"
     >
       <Image
         src={rest.highlightedProduct.image}
@@ -39,8 +39,8 @@ export const HomeUi: React.FC<HomeUiProps> = ({ ...rest }) => (
       rest.otherProducts.map((product, index) => (
         <React.Fragment key={`${product.id}-${index + 1}`}>
           <Link
-            href={`/product/${product.slug}`}
-            className="group relative col-span-3 row-span-3 rounded-lg bg-zinc-900 overflow-hidden flex justify-center items-end"
+            href={`/product/${product.id}`}
+            className="group relative col-span-3 row-span-3 rounded-lg bg-zinc-900 overflow-hidden flex justify-center items-center"
           >
             <Image
               src={product.image}
