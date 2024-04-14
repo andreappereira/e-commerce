@@ -1,14 +1,15 @@
 // 'use client';
 
 import React from 'react';
-import { api } from 'src/service/api';
-import HomeUi from './ui';
+import { api } from 'src/services/api';
+import { HomeUi } from './ui';
 import { Product } from 'src/models/product';
 
 const Home: React.FC = async () => {
   const handleGetFeaturedProducts = async (): Promise<Product[]> => {
-    const response = await api('/products/featured');
-
+    const response = await api('/products/featured', {
+      cache: 'no-store',
+    });
     const products = await response.json();
 
     return products;
@@ -20,7 +21,7 @@ const Home: React.FC = async () => {
   return (
     <HomeUi
       highlightedProduct={highlightedProduct}
-      featuredProducts={otherProducts}
+      otherProducts={otherProducts}
     />
   );
 };

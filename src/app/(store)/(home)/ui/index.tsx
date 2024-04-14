@@ -6,12 +6,12 @@ import { toCurrency } from 'src/utils';
 
 interface StateProps {
   highlightedProduct: Product;
-  featuredProducts: Product[];
+  otherProducts: Product[];
 }
 
 type HomeUiProps = StateProps;
 
-const HomeUi: React.FC<HomeUiProps> = async ({ ...rest }) => (
+export const HomeUi: React.FC<HomeUiProps> = ({ ...rest }) => (
   <div className="grid max-h-[860px] grid-cols-9 grid-rows-6 gap-6">
     <Link
       href={`/product/${rest.highlightedProduct.slug}`}
@@ -34,10 +34,10 @@ const HomeUi: React.FC<HomeUiProps> = async ({ ...rest }) => (
         </span>
       </div>
     </Link>
-    {rest.featuredProducts &&
-      rest.featuredProducts.length !== 0 &&
-      rest.featuredProducts.map((product, index) => (
-        <React.Fragment key={`${product.id}-${index}`}>
+    {rest.otherProducts &&
+      rest.otherProducts.length !== 0 &&
+      rest.otherProducts.map((product, index) => (
+        <React.Fragment key={`${product.id}-${index + 1}`}>
           <Link
             href={`/product/${product.slug}`}
             className="group relative col-span-3 row-span-3 rounded-lg bg-zinc-900 overflow-hidden flex justify-center items-end"
@@ -50,7 +50,6 @@ const HomeUi: React.FC<HomeUiProps> = async ({ ...rest }) => (
               quality={100}
               alt=""
             />
-
             <div className="absolute bottom-10 right-10 h-12 flex items-center gap-2 max-w-[280px] rounded-full border-2 border-zinc-500 bg-black/60 p-1 pl-5">
               <span className="text-sm truncate">{product.title}</span>
               <span className="flex h-full items-center justify-center rounded-full bg-violet-500 px-4 font-semibold">
@@ -62,5 +61,3 @@ const HomeUi: React.FC<HomeUiProps> = async ({ ...rest }) => (
       ))}
   </div>
 );
-
-export default HomeUi;

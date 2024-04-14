@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Header } from 'src/components/header';
+import { Header } from 'src/components';
 
 type StoreLayoutProps = {
   children: ReactNode;
